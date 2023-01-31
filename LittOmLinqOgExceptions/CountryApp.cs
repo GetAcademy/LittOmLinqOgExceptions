@@ -9,6 +9,49 @@
             _countries = CreateCountries();
         }
 
+        public void ShowCountriesStartingWith(string prefix)
+        {
+            //foreach (var country in _countries)
+            //{
+            //    if (country.Name.StartsWith(prefix))
+            //    {
+            //        Console.WriteLine(country.Name);
+            //    }
+            //}
+
+            //var selectedCountryNames0 = new List<string>();
+            //foreach (var country in _countries)
+            //{
+            //    if (country.Name.StartsWith(prefix))
+            //    {
+            //        selectedCountryNames0.Add(country.Name);
+            //    }
+            //}
+
+
+            //var selectedCountriesx = Enumerable.Where(_countries, c => c.Name.StartsWith(prefix));
+            
+            //var selectedCountries = _countries.Where(c => c.Name.StartsWith(prefix));
+            //var selectedCountryNames = selectedCountries.Select(c => c.Name);
+            //foreach (var country in selectedCountries)
+            //{
+            //    Console.WriteLine(country.Name);
+            //}
+
+            var selectedCountryNames2 = _countries
+                .Where(c => c.Name.StartsWith(prefix))
+                .Select(c => c.Name)
+                .OrderByDescending(n=>n)
+                .Skip(5)
+                .Take(5)
+                .ToArray();
+
+            foreach (var name in selectedCountryNames2)
+            {
+                Console.WriteLine(name);
+            }
+        }
+
         private static Country[] CreateCountries()
         {
             return new[]
