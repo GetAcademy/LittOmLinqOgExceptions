@@ -14,15 +14,18 @@
    - SELECT (tilsvarer map() i JavaScript)
    - ev. interface og IEnumerable og IEnumerator
 
-
+        pause til 11:03
 
  - ev. exceptions 
  */
 
 using LittOmLinqOgExceptions;
 
+//DemoIEnumerable.Run();
 var app = new CountryApp();
-app.ShowCountriesStartingWith("A");
+//app.ShowCountriesStartingWith("A");
+
+app.ShowCountriesWithLetterCount('a', 3);
 
 /*
 var name = "Terje Kolderup";
@@ -30,3 +33,5 @@ var startsAndEndsWithT1 = name.StartsWith("T") && name.EndsWith("T");
 var startsAndEndsWithT2 = name.StartsAndEndsWith("T");
 var startsAndEndsWithT3 = StringExtensions.StartsAndEndsWith(name, "T");
 */
+
+//AnonymousObjectsDemo.Run();

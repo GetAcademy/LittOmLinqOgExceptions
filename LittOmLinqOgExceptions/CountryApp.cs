@@ -30,7 +30,7 @@
 
 
             //var selectedCountriesx = Enumerable.Where(_countries, c => c.Name.StartsWith(prefix));
-            
+
             //var selectedCountries = _countries.Where(c => c.Name.StartsWith(prefix));
             //var selectedCountryNames = selectedCountries.Select(c => c.Name);
             //foreach (var country in selectedCountries)
@@ -41,7 +41,7 @@
             var selectedCountryNames2 = _countries
                 .Where(c => c.Name.StartsWith(prefix))
                 .Select(c => c.Name)
-                .OrderByDescending(n=>n)
+                .OrderByDescending(n => n)
                 .Skip(5)
                 .Take(5)
                 .ToArray();
@@ -50,6 +50,8 @@
             {
                 Console.WriteLine(name);
             }
+
+
         }
 
         private static Country[] CreateCountries()
@@ -292,6 +294,23 @@
                 new Country(234, "Tokelau",1,10),
                 new Country(235, "Holy See",801,0),
             };
+        }
+
+        public void ShowCountriesWithLetterCount(char character, int count)
+        {
+            var countryNames = _countries
+                .Select(country => new
+                {
+                    Country = country,
+                    LetterCount = country.Name.Count(c => char.ToLower(c) == character)
+                })
+                .Where(obj => obj.LetterCount >= count)
+                .Select(obj => obj.Country.Name);
+
+            foreach (var name in countryNames)
+            {
+                Console.WriteLine(name);
+            }
         }
     }
 }
